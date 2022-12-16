@@ -469,6 +469,14 @@ def test_invalidate_invalid_signed_cookie_invalidate_corrupt():
     session = get_cookie_session(id=session.id, invalidate_corrupt=True, **kwargs)
     assert "foo" not in dict(session)
 
+def test_load_deleted_from_storage_session__not_loaded():
+    req = {'cookie': {'beaker.session.id': 123}}
+    session = Session(req, timeout=1)
+
+    session.delete()
+    session.save()
+
+    Session(req, timeout=1)
 
 class TestSaveAccessedTime(unittest.TestCase):
     # These tests can't use the memory session type since it seems that loading
