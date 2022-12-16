@@ -94,7 +94,7 @@ setup(name='Beaker',
           'cryptography': ['cryptography'],
           'testsuite': [TESTS_REQUIRE]
       },
-      test_suite='nose.collector',
+      test_suite='tests',
       tests_require=TESTS_REQUIRE,
       entry_points="""
           [paste.filter_factory]
